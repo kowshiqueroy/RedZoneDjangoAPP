@@ -75,11 +75,11 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+/*
                 Intent i1= new Intent(Login.this,Home.class);
-                startActivity(i1);
+                startActivity(i1);*/
                 Log.d("Token","before");
-               /* Call <HashMap<String, Object>> call = RetrofitClient.getInstance().getMyApi().login("kowshique@gmail.com","k12345678M");
+                Call <HashMap<String, Object>> call = RetrofitClient.getInstance().getMyApi().login("kowshique@gmail.com","k12345678M");
                 call.enqueue(new Callback<HashMap<String, Object> >() {
                     @Override
                     public void onResponse(Call<HashMap<String, Object> > call, Response<HashMap<String, Object> > response) {
@@ -91,7 +91,7 @@ public class Login extends AppCompatActivity {
                     public void onFailure(Call<HashMap<String, Object> > call, Throwable t) {
                         Log.d("Token","failed");
                     }
-                });*/
+                });
 
                 /*Intent i1= new Intent(Login.this,Home.class);
                 startActivity(i1);*/
