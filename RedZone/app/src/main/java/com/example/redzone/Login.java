@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +24,9 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     Button loginbtn, signupbtn;
+    public  EditText emi, passi;
+    public static String tokenrec;
 
-    public static  ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,92 +35,50 @@ public class Login extends AppCompatActivity {
         loginbtn= (Button) findViewById(R.id.loginbtn);
         signupbtn= (Button) findViewById(R.id.signupbtn);
 
-        Log.d("1", "ok1");
-
-
-
-
-        Log.d("1", "ok2");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i1= new Intent(Login.this,Signup.class);
                 startActivity(i1);
-
             }
-
-
         });
 
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                emi=(EditText) findViewById(R.id.emailinput);
+                passi=(EditText) findViewById(R.id.passwordinput);
 
-/*
-                Intent i1= new Intent(Login.this,Home.class);
-                startActivity(i1);*/
-                Log.d("Token","before");
-                Call <HashMap<String, Object>> call = RetrofitClient.getInstance().getMyApi().login("17201114@uap-bd.edu","ilovedjango");
+                Call <HashMap<String, Object>> call = RetrofitClient.getInstance().getMyApi().login(emi.getText().toString(),passi.getText().toString());
                 call.enqueue(new Callback<HashMap<String, Object> >() {
                     @Override
+
+
+
                     public void onResponse(Call<HashMap<String, Object> > call, Response<HashMap<String, Object> > response) {
 
-                        Log.d("Token", response.body().get("token").toString());
+                        if (response.body() instanceof HashMap){
+                            tokenrec=response.body().get("token").toString();
+                            Toast toast=Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_SHORT);
+                            toast.show();
+                            Intent i1= new Intent(Login.this,Home.class);
+                            startActivity(i1);
+                        }
 
-                        //5b3eb583ce430bb8cb7bf700e559b33a96ac8375
+                        Toast toast=Toast.makeText(getApplicationContext(),"Login Failed",Toast.LENGTH_SHORT);
+                        toast.show();
                     }
 
                     @Override
                     public void onFailure(Call<HashMap<String, Object> > call, Throwable t) {
-                        Log.d("Token","failed");
+                        Toast toast=Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                 });
-
-                /*Intent i1= new Intent(Login.this,Home.class);
-                startActivity(i1);*/
-
             }
-
-
         });
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Email"
+                android:text="17201114@uap-bd.edu"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -50,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Password"
+                android:text="ilovedjango"
                 android:inputType="textPassword" />
 
             <Button

@@ -17,7 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Home extends AppCompatActivity {
-TextView t;
+TextView t, t2;
 Button rb, gtb, pb;
 
     @Override
@@ -25,12 +25,13 @@ Button rb, gtb, pb;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 t=(TextView) findViewById(R.id.textView2);
+        t2=(TextView) findViewById(R.id.tv2);
         getRedUsers();
 rb= (Button) findViewById(R.id.rb);
         gtb= (Button) findViewById(R.id.gtb);
         pb= (Button) findViewById(R.id.pb);
 
-
+t2.setText(Login.tokenrec);
         rb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
