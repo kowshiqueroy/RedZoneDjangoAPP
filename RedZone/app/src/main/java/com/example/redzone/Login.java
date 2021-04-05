@@ -79,12 +79,14 @@ public class Login extends AppCompatActivity {
                 Intent i1= new Intent(Login.this,Home.class);
                 startActivity(i1);*/
                 Log.d("Token","before");
-                Call <HashMap<String, Object>> call = RetrofitClient.getInstance().getMyApi().login("kowshique@gmail.com","k12345678M");
+                Call <HashMap<String, Object>> call = RetrofitClient.getInstance().getMyApi().login("17201114@uap-bd.edu","ilovedjango");
                 call.enqueue(new Callback<HashMap<String, Object> >() {
                     @Override
                     public void onResponse(Call<HashMap<String, Object> > call, Response<HashMap<String, Object> > response) {
 
-                        Log.d("Token", response.body().toString());
+                        Log.d("Token", response.body().get("token").toString());
+
+                        //5b3eb583ce430bb8cb7bf700e559b33a96ac8375
                     }
 
                     @Override
