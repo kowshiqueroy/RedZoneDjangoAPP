@@ -10,11 +10,12 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface Api {
 
 
-    String BASE_URL = "https://7531dc2fe167.ngrok.io";
+    String BASE_URL = "https://a51a2193dd6b.ngrok.io";
 
     @GET("user_list")
     Call<List<RedUser>> getRedUsers();
@@ -36,12 +37,12 @@ Call<HashMap<String, Object>> routinenew(
         @Field("token") String token
     );
 
-@FormUrlEncoded
-@POST("/")
+
+@GET("location_risk/")
 Call<HashMap<String, Object>> gotonew(
 
 
-            @Field("location") String location
+            @Query("location") String location
     );
 
 
