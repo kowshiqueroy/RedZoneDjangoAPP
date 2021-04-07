@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/redzonewall"
-    tools:context=".Home">
+    tools:context=".Predictions">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                 android:text="Visting Crowded Palces 56% Unsafe" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Interactions with others 39% unsafe" />

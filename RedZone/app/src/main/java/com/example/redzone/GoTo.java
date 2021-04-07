@@ -3,6 +3,7 @@ package com.example.redzone;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -33,8 +34,8 @@ pb.setOnClickListener(new View.OnClickListener() {
 
                     if (response.body().containsKey("affected_rate")){
 
-
-                            Toast toast=Toast.makeText(getApplicationContext(),"Successful"+response.body().get("affected_rate").toString(),Toast.LENGTH_SHORT);
+                        Log.d("risk",response.body().get("affected_rate").toString());
+                            Toast toast=Toast.makeText(getApplicationContext(),"Risk...."+(response.body().get("affected_rate").toString()),Toast.LENGTH_SHORT);
                             toast.show();
                     }
                 }

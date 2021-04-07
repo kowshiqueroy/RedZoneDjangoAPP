@@ -25,8 +25,8 @@ Button s;
             @Override
             public void onClick(View v) {
                 String a="{\n" +
-                        "    \"covid_positive\": \"false\",\n" +
-                        "    \"visited_outside\": \"true\",\n" +
+                        "    \"covid_positive\": \"true\",\n" +
+                        "    \"visited_outside\": \"false\",\n" +
                         "    \"other_interaction\": \"false\",\n" +
                         "    \"wore_mask\": \"true\",\n" +
                         "    \"wore_ppe\": \"false\",\n" +

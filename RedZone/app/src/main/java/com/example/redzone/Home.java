@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -65,21 +66,31 @@ t2.setText(Login.tokenrec);
 
     private void getRedUsers() {
         Log.d("1", "ok3");
-        Call<List<RedUser>> call = RetrofitClient.getInstance().getMyApi().getRedUsers();
-        call.enqueue(new Callback<List<RedUser>>() {
+        Call<RedUser> call = RetrofitClient.getInstance().getMyApi().getRedUsers(Login.tokenrec);
+        call.enqueue(new Callback<RedUser>() {
             @Override
-            public void onResponse(Call<List<RedUser>> call, Response<List<RedUser>> response) {
-                List<RedUser> heroList = response.body();
-                if (heroList!=null) {
+            public void onResponse(Call<RedUser> call, Response<RedUser> response) {
 
-                    t.setText(heroList.get(0).getFirst_name());
-                    Log.d("1", heroList.toString());
+                if (response.body() instanceof RedUser) {
+
+
+
+t2.setText( response.body().getFirst_name());
+                        Log.d("risk", response.body().getFirst_name().toString());
+
+                        Toast toast=Toast.makeText(getApplicationContext(),"Receiving Profile....",Toast.LENGTH_SHORT);
+                        toast.show();
+
                 }
+
+
             }
 
             @Override
-            public void onFailure(Call<List<RedUser>> call, Throwable t) {
+            public void onFailure(Call<RedUser> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+           Log.d("fail", "lol");
+
             }
         });
     }

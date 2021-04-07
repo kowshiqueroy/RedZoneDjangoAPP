@@ -15,10 +15,21 @@ import retrofit2.http.Query;
 public interface Api {
 
 
-    String BASE_URL = "https://a51a2193dd6b.ngrok.io";
+    String BASE_URL = "https://iamtauhid.pythonanywhere.com";
 
-    @GET("user_list")
-    Call<List<RedUser>> getRedUsers();
+    @GET("user_detail/")
+    Call<RedUser> getRedUsers(
+
+            @Query("token") String token
+
+    );
+
+    @GET("get_prediction/")
+    Call<HashMap<String, Object>> getpredict(
+
+            @Query("token") String token
+
+    );
 
 @FormUrlEncoded
 @POST("create_user/")
