@@ -14,7 +14,7 @@ import retrofit2.http.POST;
 public interface Api {
 
 
-    String BASE_URL = "https://2b21eb27e4b4.ngrok.io";
+    String BASE_URL = "https://7531dc2fe167.ngrok.io";
 
     @GET("user_list")
     Call<List<RedUser>> getRedUsers();
@@ -26,6 +26,24 @@ Call<RedUser> createUser(
         @Field("serializer_data") String hm,
         @Field("date_string") String date_string
 );
+
+
+@FormUrlEncoded
+@POST("post_routine/")
+Call<HashMap<String, Object>> routinenew(
+
+        @Field("serializer_data") String hm,
+        @Field("token") String token
+    );
+
+@FormUrlEncoded
+@POST("/")
+Call<HashMap<String, Object>> gotonew(
+
+
+            @Field("location") String location
+    );
+
 
 @FormUrlEncoded
 @POST("get_auth_token/")

@@ -31,9 +31,14 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        emi=(EditText) findViewById(R.id.emailinput);
+        passi=(EditText) findViewById(R.id.passwordinput);
         loginbtn= (Button) findViewById(R.id.loginbtn);
         signupbtn= (Button) findViewById(R.id.signupbtn);
+
+
+        emi.setText(Signup.usernamein);
+        passi.setText(Signup.passin);
 
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,8 +52,7 @@ public class Login extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                emi=(EditText) findViewById(R.id.emailinput);
-                passi=(EditText) findViewById(R.id.passwordinput);
+
 
                 Call <HashMap<String, Object>> call = RetrofitClient.getInstance().getMyApi().login(emi.getText().toString(),passi.getText().toString());
                 call.enqueue(new Callback<HashMap<String, Object> >() {
@@ -64,10 +68,15 @@ public class Login extends AppCompatActivity {
                             toast.show();
                             Intent i1= new Intent(Login.this,Home.class);
                             startActivity(i1);
+                        } else{
+
+                            Toast toast=Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT);
+                            toast.show();
+
+
                         }
 
-                        Toast toast=Toast.makeText(getApplicationContext(),"Login Failed",Toast.LENGTH_SHORT);
-                        toast.show();
+
                     }
 
                     @Override

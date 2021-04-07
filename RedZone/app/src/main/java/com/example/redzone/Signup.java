@@ -20,13 +20,13 @@ import retrofit2.Response;
 
 public class Signup extends AppCompatActivity {
 Button loginbtn,signupbtn2;
+
+public static String usernamein="17201114@uap-bd.edu", passin="ilovedjango";
 EditText editfn, editln, editdob, editemail, editgender, editprofession, editpass, editpass2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-        Log.d("Signup", "enter");
 
         loginbtn= (Button) findViewById(R.id.loginbtn2);
         signupbtn2= (Button) findViewById(R.id.signupbtnsave);
@@ -56,14 +56,14 @@ EditText editfn, editln, editdob, editemail, editgender, editprofession, editpas
             public void onClick(View v) {
 
 
+                String gen=editgender.getText().toString();
 
+                gen=gen.toUpperCase();
 
-                Log.d("Signup", "btclick");
-                String gen;
-                if (editgender.getText().toString()=="male" ||editgender.getText().toString()=="Male"){
+                if (gen.equals("MALE") ){
 
                     gen="1";
-                } else{gen="0"; }
+                } else{gen="2"; }
 
 
                 String hm="{\"first_name\":\"" +
@@ -96,27 +96,40 @@ call.enqueue(new Callback<RedUser>() {
         if (response.body() instanceof RedUser){
             Log.d("Res", "ok");
             Log.d("Res", "ok");
-            if(editemail.getText().toString()==response.body().getEmail()){
-                Toast toast=Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_SHORT);
+            if(editemail.getText().toString().equals(response.body().getEmail())){
+
+                usernamein=response.body().getUsername();
+                passin=editpass.getText().toString();
+
+                Toast toast=Toast.makeText(getApplicationContext(),"Successfully Send",Toast.LENGTH_SHORT);
                 toast.show();
                 Intent i1= new Intent(Signup.this,Login.class);
                 startActivity(i1);
 
             }
+            else{
+
+                Toast toast=Toast.makeText(getApplicationContext(),"But Failed",Toast.LENGTH_SHORT);
+                toast.show();
+
+
+            }
+        }
+        else{
+
             Toast toast=Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT);
             toast.show();
-            Log.d("Res", "if not");
+
+
         }
-        Toast toast=Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT);
-        toast.show();
-        Log.d("Res", "if not");
+
     }
 
     @Override
     public void onFailure(Call<RedUser> call, Throwable t) {
         Toast toast=Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT);
         toast.show();
-        Log.d("Res", "failed");
+
 
     }
 });
