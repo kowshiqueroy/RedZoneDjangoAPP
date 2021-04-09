@@ -15,7 +15,14 @@
         <activity android:name=".Predictions"></activity>
         <activity android:name=".GoTo" />
         <activity android:name=".Routine" />
-        <activity android:name=".Home" />
+        <activity android:name=".Home">
+           <intent-filter>
+            <action android:name="android.intent.action.Home" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+
+        </activity>
         <activity android:name=".Signup" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">

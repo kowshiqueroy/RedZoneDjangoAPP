@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,18 +20,31 @@ import retrofit2.Response;
 
 public class Home extends AppCompatActivity {
 TextView t, t2;
-Button rb, gtb, pb;
+Button rb, gtb, pb,lo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-t=(TextView) findViewById(R.id.textView2);
+
         t2=(TextView) findViewById(R.id.tv2);
         getRedUsers();
-rb= (Button) findViewById(R.id.rb);
+        rb= (Button) findViewById(R.id.rb);
         gtb= (Button) findViewById(R.id.gtb);
         pb= (Button) findViewById(R.id.pb);
+        lo= (Button) findViewById(R.id.logout);
+
+
+        lo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Home.this.finish();
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                startActivity(intent);
+                System.exit(0);
+            }
+        });
 
 t2.setText(Login.tokenrec);
         rb.setOnClickListener(new View.OnClickListener() {

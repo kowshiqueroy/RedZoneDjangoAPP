@@ -39,9 +39,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/ph"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:textSize="10dp"
+                    android:text="Home" />
+                <Button
+                    android:id="@+id/pr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -51,7 +59,7 @@
                     android:text="Routine" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/pg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -60,49 +68,36 @@
                     android:textSize="10dp"
                     android:text="Goto" />
 
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:textSize="10dp"
-                    android:text="Predictions" />
+
+
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tpm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Staying Home 95% Safe" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Visting Crowded Palces 56% Unsafe" />
+                />
 
             <TextView
                 android:id="@+id/tp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Interactions with others 39% unsafe" />
+                android:gravity="center"
+                android:textSize="15dp"
+                android:textColor="@color/design_default_color_error"
+                android:text="Receving...." />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Wearing Mask 65% safe" />
+
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Wearing PPE 85% safe" />
+                android:gravity="center"
+                android:text="\nStay Home Stay Safe" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/noti"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Get Risk Notifications" />
